@@ -5,6 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
+  //  strict mode may cause some warning in console
+  //  https://github.com/jquense/react-big-calendar/issues/1777
   <React.StrictMode>
     <App />
   </React.StrictMode>,
