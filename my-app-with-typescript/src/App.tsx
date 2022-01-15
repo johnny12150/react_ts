@@ -1,25 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Calendar, Views, momentLocalizer } from 'react-big-calendar';
+import moment from 'moment'
+import "react-big-calendar/lib/css/react-big-calendar.css";
+
+const localizer = momentLocalizer(moment)
+const myEvents = [
+    {id: 0,
+  title: 'All Day Event very long title',
+  allDay: true,
+  // 0對應到是1月...
+  start: new Date(2022, 0, 1),
+  end: new Date(2022, 0, 10),}
+]
+
+// 抓出所有view的種類
+let allViews = Object.values(Views)
+// https://stackoverflow.com/a/69198602
+console.log(allViews.map(k => Views[k as keyof typeof Views]))
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Calendar 
+    localizer={localizer}
+    defaultDate={new Date()}
+    defaultView="month"
+    events={myEvents}
+    style={{ height: "100vh" }}
+    />
   );
 }
 
