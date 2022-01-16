@@ -4,6 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import CSS from 'csstype'
+import {EventSourceInput} from "@fullcalendar/common";
 
 // height只能在calendar內控制
 // https://www.kindacode.com/snippet/react-typescript-using-inline-styles-correctly/
@@ -13,9 +14,15 @@ const myCal: CSS.Properties = {
   marginRight: '30px',
 }
 
-const myHear: ToolbarInput = {
-    right:'dayGridMonth,timeGridWeek,listWeek'
+const myEvents: EventSourceInput = [{
+    title: 'First event', date: '2022-01-15'
+}, {
+    title: 'Second event', start: '2022-01-18', end: '2022-01-22'
+}, {
+    // UTC+8
+    title: 'Third event', date: '2022-01-30T12:00:00+08:00',
 }
+]
 
 function App() {
   return (
@@ -29,8 +36,8 @@ function App() {
                 // 不能有空格會導致按鈕變形
                 right:'dayGridMonth,timeGridWeek,listWeek',
             }}
-            // headerToolbar={myHear}
             height={'90vh'}
+            events={myEvents}
         />
       </div>
   );
