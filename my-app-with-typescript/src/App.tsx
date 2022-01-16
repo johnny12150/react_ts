@@ -14,7 +14,7 @@ const myCal: CSS.Properties = {
 }
 
 const myHear: ToolbarInput = {
-    right:'dayGridMonth, timeGridWeek, listWeek'
+    right:'dayGridMonth,timeGridWeek,listWeek'
 }
 
 function App() {
@@ -24,7 +24,10 @@ function App() {
             plugins={[ dayGridPlugin, timeGridPlugin, listPlugin ]}
             initialView="dayGridMonth"
             headerToolbar={{
-                right:'dayGridMonth, timeGridWeek, listWeek'
+                center: 'title',
+                start: 'today prev,next',
+                // 不能有空格會導致按鈕變形
+                right:'dayGridMonth,timeGridWeek,listWeek',
             }}
             // headerToolbar={myHear}
             height={'90vh'}
