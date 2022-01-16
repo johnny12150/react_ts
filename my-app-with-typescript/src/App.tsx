@@ -3,6 +3,7 @@ import FullCalendar, {ToolbarInput} from '@fullcalendar/react' // must go before
 import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
+import resourceTimelinePlugin from '@fullcalendar/resource-timeline' // a plugin!
 import CSS from 'csstype'
 import {EventSourceInput} from "@fullcalendar/common";
 
@@ -27,17 +28,19 @@ const myEvents: EventSourceInput = [{
 function App() {
   return (
       <div style={myCal}>
+        {/* todo 可能要用不同的component切分resource和普通calendar */}
         <FullCalendar
-            plugins={[ dayGridPlugin, timeGridPlugin, listPlugin ]}
+            plugins={[ dayGridPlugin, timeGridPlugin, listPlugin, resourceTimelinePlugin ]}
             initialView="dayGridMonth"
             headerToolbar={{
                 center: 'title',
                 start: 'today prev,next',
                 // 不能有空格會導致按鈕變形
-                right:'dayGridMonth,timeGridWeek,listWeek',
+                right:'dayGridMonth,timeGridWeek,listWeek,resourceTimelineWeek',
             }}
             height={'90vh'}
             events={myEvents}
+            schedulerLicenseKey={'CC-Attribution-NonCommercial-NoDerivatives'}
         />
       </div>
   );
